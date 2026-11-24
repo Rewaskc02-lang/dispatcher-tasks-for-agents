@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14122a"/><stop offset="1" stop-color="#0d1526"/></linearGradient>
+  <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+  <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#8b5cf6" stop-opacity="0.35"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1e1b4b" flood-opacity="0.45"/></filter>
+</defs>
+<rect x="0" y="0" width="1200" height="600" rx="28" fill="url(#bg)"/>
+<circle cx="90" cy="70" r="3" fill="#3d3870"/>
+<circle cx="260" cy="40" r="2" fill="#3d3870"/>
+<circle cx="520" cy="60" r="2.5" fill="#3d3870"/>
+<circle cx="760" cy="36" r="2" fill="#3d3870"/>
+<circle cx="1010" cy="72" r="3" fill="#3d3870"/>
+<circle cx="1130" cy="140" r="2" fill="#3d3870"/>
+<circle cx="640" cy="120" r="1.8" fill="#3d3870"/>
+<circle cx="40" cy="300" r="2" fill="#3d3870"/>
+<circle cx="1160" cy="330" r="2.5" fill="#3d3870"/>
+<circle cx="400" cy="150" r="1.6" fill="#3d3870"/>
+<path d="M40 520 H1160" stroke="#353252" stroke-width="2" stroke-linecap="round"/>
+<rect x="64" y="430" width="92" height="12" rx="6" fill="#2e2b4d"/>
+<rect x="104" y="442" width="12" height="70" rx="6" fill="#2e2b4d"/>
+<path d="M70 432 C70 360, 150 360, 150 432 Z" fill="#8b5cf6"/>
+<circle cx="110" cy="338" r="30" fill="#e7b48f"/>
+<path d="M79 336 C76 298, 140 292, 142 332 C128 318, 100 314, 79 336 Z" fill="#a78bfa"/>
+<circle cx="122" cy="340" r="3" fill="#ecebf7"/>
+<path d="M118 353 q6 4 12 0" stroke="#ecebf7" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<rect x="130" y="414" width="150" height="14" rx="7" fill="#211f3a" stroke="#2e2b4d"/>
+<rect x="170" y="428" width="10" height="84" rx="5" fill="#2e2b4d"/>
+<rect x="260" y="428" width="10" height="84" rx="5" fill="#2e2b4d"/>
+<path d="M180 414 L192 358 L260 358 L250 414 Z" fill="#0b0a17"/>
+<circle cx="224" cy="386" r="5" fill="#8b5cf6" opacity="0.8"/>
+<path d="M132 392 Q162 402 182 410" stroke="#8b5cf6" stroke-width="16" fill="none" stroke-linecap="round"/>
+<g filter="url(#sh)"><rect x="34" y="150" width="200.0" height="70" rx="18" fill="#1d1b33"/><path d="M68 219 l-10 22 l26 -22 Z" fill="#1d1b33"/></g>
+<text x="54" y="182" font-size="15" font-weight="600" fill="#ecebf7" text-anchor="start" opacity="1">“Refactor payments —</text>
+<text x="54" y="204" font-size="15" font-weight="500" fill="#9b98b5" text-anchor="start" opacity="1">not urgent, size L.”</text>
+<path d="M280 215 C330 225, 360 250, 385 300" stroke="#8b5cf6" stroke-width="2.4" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+<circle cx="425" cy="393.0" r="99.00000000000001" fill="url(#halo)"/>
+<g filter="url(#sh)">
+<rect x="378.8" y="404.0" width="92.4" height="66.0" rx="24.200000000000003" fill="#262443" stroke="#3d3a62"/>
+<rect x="370.0" y="324.79999999999995" width="110.00000000000001" height="81.4" rx="28.6" fill="#262443" stroke="#3d3a62"/>
+</g>
+<line x1="425" y1="324.79999999999995" x2="425" y2="302.79999999999995" stroke="#3d3a62" stroke-width="4.4" stroke-linecap="round"/>
+<circle cx="425" cy="298.4" r="7.700000000000001" fill="#ec4899"/>
+<rect x="385.4" y="340.2" width="79.2" height="44.0" rx="17.6" fill="#0b0a17"/>
+<circle cx="409.6" cy="360.0" r="6.050000000000001" fill="#38bdf8"/>
+<circle cx="440.4" cy="360.0" r="6.050000000000001" fill="#38bdf8"/>
+<path d="M415.1 372.1 q9.9 6.6000000000000005 19.8 0" stroke="#38bdf8" stroke-width="2.8600000000000003" fill="none" stroke-linecap="round"/>
+<g transform="rotate(12 478 376)"><rect x="456" y="347" width="44" height="58" rx="8" fill="#1d1b33" stroke="#353252"/><rect x="464" y="358" width="28" height="5" rx="2.5" fill="#353252"/><rect x="464" y="370" width="28" height="5" rx="2.5" fill="#353252"/><rect x="464" y="382" width="28" height="5" rx="2.5" fill="#353252"/></g>
+<text x="425" y="505" font-size="16" font-weight="700" fill="#ecebf7" text-anchor="middle" opacity="1">dispatcher</text>
+<text x="425" y="545" font-size="12.5" font-weight="500" fill="#9b98b5" text-anchor="middle" opacity="1">one queue · sizes · urgency</text>
+<g transform="rotate(-2 605.0 392)" filter="url(#sh)"><rect x="530" y="370" width="150" height="44" rx="12" fill="#1d1b33" stroke="#353252"/><rect x="540" y="382" width="84" height="7" rx="3.5" fill="#353252"/><rect x="540" y="395" width="60" height="7" rx="3.5" fill="#353252" opacity="0.7"/><rect x="634" y="381" width="36" height="22" rx="11" fill="#ef4444"/><text x="652" y="396.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">now</text></g>
+<g transform="rotate(1.5 611.0 332)" filter="url(#sh)"><rect x="536" y="310" width="150" height="44" rx="12" fill="#1d1b33" stroke="#353252"/><rect x="546" y="322" width="84" height="7" rx="3.5" fill="#353252"/><rect x="546" y="335" width="60" height="7" rx="3.5" fill="#353252" opacity="0.7"/><rect x="640" y="321" width="36" height="22" rx="11" fill="#8b5cf6"/><text x="658" y="336.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">L</text></g>
+<g transform="rotate(-1 603.0 272)" filter="url(#sh)"><rect x="528" y="250" width="150" height="44" rx="12" fill="#1d1b33" stroke="#353252"/><rect x="538" y="262" width="84" height="7" rx="3.5" fill="#353252"/><rect x="538" y="275" width="60" height="7" rx="3.5" fill="#353252" opacity="0.7"/><rect x="632" y="261" width="36" height="22" rx="11" fill="#6366f1"/><text x="650" y="276.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">M</text></g>
+<g transform="rotate(2 613.0 212)" filter="url(#sh)"><rect x="538" y="190" width="150" height="44" rx="12" fill="#1d1b33" stroke="#353252"/><rect x="548" y="202" width="84" height="7" rx="3.5" fill="#353252"/><rect x="548" y="215" width="60" height="7" rx="3.5" fill="#353252" opacity="0.7"/><rect x="642" y="201" width="36" height="22" rx="11" fill="#38bdf8"/><text x="660" y="216.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">S</text></g>
+<text x="612" y="450" font-size="15" font-weight="700" fill="#ecebf7" text-anchor="middle" opacity="1">queue</text>
+<text x="612" y="470" font-size="12" font-weight="500" fill="#9b98b5" text-anchor="middle" opacity="1">waits for the right moment</text>
+<path d="M690 300 C720 160, 780 120, 812 270" stroke="#8b5cf6" stroke-width="2.4" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+<g transform="rotate(8 767.0 134)" filter="url(#sh)"><rect x="712" y="112" width="110" height="44" rx="12" fill="#1d1b33" stroke="#353252"/><rect x="722" y="124" width="44" height="7" rx="3.5" fill="#353252"/><rect x="722" y="137" width="20" height="7" rx="3.5" fill="#353252" opacity="0.7"/><rect x="776" y="123" width="36" height="22" rx="11" fill="#8b5cf6"/><text x="794" y="138.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">L</text></g>
+<rect x="750" y="380" width="140" height="14" rx="7" fill="#211f3a" stroke="#2e2b4d"/>
+<rect x="762" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<rect x="868" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<circle cx="790" cy="345.6" r="46.800000000000004" fill="url(#halo)"/>
+<g filter="url(#sh)">
+<rect x="768.16" y="350.8" width="43.68" height="31.200000000000003" rx="11.440000000000001" fill="#262443" stroke="#3d3a62"/>
+<rect x="764.0" y="313.36" width="52.0" height="38.480000000000004" rx="13.52" fill="#262443" stroke="#3d3a62"/>
+</g>
+<line x1="790" y1="313.36" x2="790" y2="302.96" stroke="#3d3a62" stroke-width="2.08" stroke-linecap="round"/>
+<circle cx="790" cy="300.88" r="3.64" fill="#ec4899"/>
+<rect x="771.28" y="320.64" width="37.44" height="20.8" rx="8.32" fill="#0b0a17"/>
+<circle cx="782.72" cy="330.0" r="2.8600000000000003" fill="#38bdf8"/>
+<circle cx="797.28" cy="330.0" r="2.8600000000000003" fill="#38bdf8"/>
+<path d="M785.32 335.72 q4.68 3.12 9.36 0" stroke="#38bdf8" stroke-width="1.352" fill="none" stroke-linecap="round"/>
+<rect x="822" y="288" width="66" height="62" rx="10" fill="#0b0a17" stroke="#3d3a62"/>
+<rect x="849" y="350" width="12" height="30" fill="#3d3a62"/>
+<rect x="822" y="288" width="66" height="62" rx="10" fill="url(#glow)"/>
+<rect x="832" y="298" width="40" height="6" rx="3" fill="#8b5cf6" opacity="0.9"/>
+<rect x="832" y="309" width="30" height="6" rx="3" fill="#38bdf8" opacity="0.9"/>
+<rect x="832" y="320" width="46" height="6" rx="3" fill="#ec4899" opacity="0.9"/>
+<rect x="832" y="331" width="24" height="6" rx="3" fill="#10b981" opacity="0.9"/>
+<text x="820" y="424" font-size="15" font-weight="700" fill="#ecebf7" text-anchor="middle" opacity="1">Claude Code</text>
+<text x="820" y="444" font-size="12.5" font-weight="600" fill="#10b981" text-anchor="middle" opacity="1">working on 1 task</text>
+<rect x="765" y="458" width="110" height="8" rx="4" fill="#353252"/>
+<rect x="765" y="458" width="37.400000000000006" height="8" rx="4" fill="url(#acc)"/>
+<text x="820" y="482" font-size="11.5" font-weight="500" fill="#9b98b5" text-anchor="middle" opacity="1">week used 34%</text>
+<rect x="900" y="380" width="140" height="14" rx="7" fill="#211f3a" stroke="#2e2b4d"/>
+<rect x="912" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<rect x="1018" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<g filter="url(#sh)">
+<rect x="918.16" y="350.8" width="43.68" height="31.200000000000003" rx="11.440000000000001" fill="#262443" stroke="#3d3a62"/>
+<rect x="914.0" y="313.36" width="52.0" height="38.480000000000004" rx="13.52" fill="#262443" stroke="#3d3a62"/>
+</g>
+<line x1="940" y1="313.36" x2="940" y2="302.96" stroke="#3d3a62" stroke-width="2.08" stroke-linecap="round"/>
+<circle cx="940" cy="300.88" r="3.64" fill="#3d3a62"/>
+<rect x="921.28" y="320.64" width="37.44" height="20.8" rx="8.32" fill="#0b0a17"/>
+<rect x="929.6" y="328.96" width="6.24" height="2.08" rx="1.04" fill="#f59e0b"/>
+<rect x="944.16" y="328.96" width="6.24" height="2.08" rx="1.04" fill="#f59e0b"/>
+<rect x="972" y="288" width="66" height="62" rx="10" fill="#0b0a17" stroke="#3d3a62"/>
+<rect x="999" y="350" width="12" height="30" fill="#3d3a62"/>
+<circle cx="1005" cy="319" r="19" fill="none" stroke="#f59e0b" stroke-width="3"/>
+<path d="M1005 308 V319 L1013 325" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+<text x="970" y="424" font-size="15" font-weight="700" fill="#ecebf7" text-anchor="middle" opacity="1">Codex CLI</text>
+<text x="970" y="444" font-size="12.5" font-weight="600" fill="#f59e0b" text-anchor="middle" opacity="1">waits for its reset</text>
+<rect x="915" y="458" width="110" height="8" rx="4" fill="#353252"/>
+<rect x="915" y="458" width="78.1" height="8" rx="4" fill="url(#acc)"/>
+<text x="970" y="482" font-size="11.5" font-weight="500" fill="#9b98b5" text-anchor="middle" opacity="1">week used 71%</text>
+<rect x="1050" y="380" width="140" height="14" rx="7" fill="#211f3a" stroke="#2e2b4d"/>
+<rect x="1062" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<rect x="1168" y="394" width="10" height="126" rx="5" fill="#2e2b4d"/>
+<g filter="url(#sh)">
+<rect x="1068.16" y="350.8" width="43.68" height="31.200000000000003" rx="11.440000000000001" fill="#262443" stroke="#3d3a62"/>
+<rect x="1064.0" y="313.36" width="52.0" height="38.480000000000004" rx="13.52" fill="#262443" stroke="#3d3a62"/>
+</g>
+<line x1="1090" y1="313.36" x2="1090" y2="302.96" stroke="#3d3a62" stroke-width="2.08" stroke-linecap="round"/>
+<circle cx="1090" cy="300.88" r="3.64" fill="#3d3a62"/>
+<rect x="1071.28" y="320.64" width="37.44" height="20.8" rx="8.32" fill="#0b0a17"/>
+<path d="M1079.6 330.52 q3.12 2.6 6.24 0" stroke="#38bdf8" stroke-width="1.352" fill="none" stroke-linecap="round"/>
+<path d="M1094.16 330.52 q3.12 2.6 6.24 0" stroke="#38bdf8" stroke-width="1.352" fill="none" stroke-linecap="round"/>
+<rect x="1122" y="288" width="66" height="62" rx="10" fill="#0b0a17" stroke="#3d3a62"/>
+<rect x="1149" y="350" width="12" height="30" fill="#3d3a62"/>
+<text x="1155" y="326" font-size="16" font-weight="700" fill="#9b98b5" text-anchor="middle" opacity="1">z z</text>
+<text x="1120" y="424" font-size="15" font-weight="700" fill="#ecebf7" text-anchor="middle" opacity="1">Gemini CLI</text>
+<text x="1120" y="444" font-size="12.5" font-weight="600" fill="#38bdf8" text-anchor="middle" opacity="1">free</text>
+<rect x="1065" y="458" width="110" height="8" rx="4" fill="#353252"/>
+<rect x="1065" y="458" width="19.8" height="8" rx="4" fill="url(#acc)"/>
+<text x="1120" y="482" font-size="11.5" font-weight="500" fill="#9b98b5" text-anchor="middle" opacity="1">week used 18%</text>
+</svg>
