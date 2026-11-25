@@ -225,7 +225,7 @@ class Runs(Base):
         self.tick()
         self.complete()
         [call] = self.calls()
-        self.assertEqual(str(self.work), call["cwd"])
+        self.assertEqual(self.work.resolve(), Path(call["cwd"]).resolve())  # macOS: /var is /private/var
         self.assertEqual("fix tests/test_x.py please", call["stdin"])
         self.assertIn("--session-id", call["argv"])
         info = self.sched().show("a")
