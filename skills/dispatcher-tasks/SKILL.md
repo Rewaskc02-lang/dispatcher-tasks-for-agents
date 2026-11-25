@@ -18,8 +18,9 @@ and put the task in the queue. The dispatcher decides *when* and *on which worke
 2. **Size it yourself** while writing the brief: S (≈3 % of a usage window), M (≈10 %), L (≈25 %), XL (≈50 %).
    The dispatcher learns real sizes from finished tasks.
 3. **Normal tasks go to the worker with the most weekly headroom**, even if another worker has room in its short
-   window right now, so no worker is drained before the others. If that worker's short window can't fit the task,
-   the task waits for that window to reset; it is not pushed to another worker.
+   window right now, so no worker is drained before the others (workers with unknown limits: the one used least this
+   week). If that worker's short window can't fit the task, the task waits for that window to reset; it is not pushed
+   to another worker.
 4. **Urgent tasks** run now where they fit; between two that fit, the one with more weekly headroom.
 5. **One task at a time per worker.** Never hand a worker several tasks at once: a task that overruns the window is
    cut off and its prompt cache is lost. Waiting for a reset is fine.

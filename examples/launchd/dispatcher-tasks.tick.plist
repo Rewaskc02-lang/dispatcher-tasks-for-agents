@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  dispatcher-tasks-for-agents: run one `tick` every 5 minutes (macOS, a per-user LaunchAgent).
+  Before installing, replace INSTALL_DIR with the folder of the project and HOME_DIR with your home folder
+  (launchd does not expand ~), and make sure PATH has the folders of your agent CLIs (`command -v claude` etc.).
+  Install:   cp dispatcher-tasks.tick.plist ~/Library/LaunchAgents/
+             launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/dispatcher-tasks.tick.plist
+  Stop:      launchctl bootout gui/$(id -u)/dispatcher-tasks.tick
+-->
+<plist version="1.0"><dict>
+  <key>Label</key><string>dispatcher-tasks.tick</string>
+  <key>ProgramArguments</key><array>
+    <string>/usr/bin/python3</string>
+    <string>INSTALL_DIR/dispatcher.py</string>
+    <string>tick</string>
+  </array>
+  <key>WorkingDirectory</key><string>INSTALL_DIR</string>
+  <key>EnvironmentVariables</key><dict>
+    <key>PATH</key><string>HOME_DIR/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartInterval</key><integer>300</integer>
+  <key>RunAtLoad</key><true/>
+  <!-- runs started by tick keep going after tick itself exits -->
+  <key>AbandonProcessGroup</key><true/>
+  <key>StandardOutPath</key><string>HOME_DIR/Library/Logs/dispatcher-tasks.log</string>
+  <key>StandardErrorPath</key><string>HOME_DIR/Library/Logs/dispatcher-tasks.log</string>
+</dict></plist>

@@ -1,0 +1,15 @@
+# dispatcher-tasks-for-agents: one `tick` (a systemd *user* unit; started by dispatcher-tasks-tick.timer).
+# Replace INSTALL_DIR with the folder of the project. %h is your home folder.
+# Install:  cp dispatcher-tasks-tick.service dispatcher-tasks-tick.timer ~/.config/systemd/user/
+#           systemctl --user daemon-reload && systemctl --user enable --now dispatcher-tasks-tick.timer
+# Stop:     systemctl --user disable --now dispatcher-tasks-tick.timer
+[Unit]
+Description=dispatcher-tasks-for-agents: one scheduling step
+
+[Service]
+Type=oneshot
+WorkingDirectory=INSTALL_DIR
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 INSTALL_DIR/dispatcher.py tick
+# runs started by tick must keep going after tick itself exits
+KillMode=process

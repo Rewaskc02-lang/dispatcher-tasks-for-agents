@@ -40,13 +40,18 @@ python3 dispatcher.py init
 `init` writes `~/.config/dispatcher-tasks/config.json` (or the path in `DISPATCHER_HOME`) and asks nothing by itself —
 you fill it with the user's answers:
 
-- **ASK** which of the agents found in step 0 the dispatcher may use. One worker per agent the user has.
-- For each worker: does the user sign in with a subscription (the agent's own login) or with an API key from their
-  environment? **Never** ask for, copy, print or store a password, token or key — the dispatcher only starts the
-  agent CLI, which uses the user's own sign-in.
-- Windows/limits: the `claude` adapter reads its windows from the CLI; for others **ASK** whether they know their plan's
-  limits (window length, weekly quota) or leave them as `unknown` (then the dispatcher just runs one task at a time and
-  pauses after a limit is hit).
+- **ASK** which of the agents found in step 0 the dispatcher may use (`"enabled": true|false`). One worker per agent
+  the user has — the dispatcher refuses two enabled workers of the same agent.
+- For each worker: does the user sign in with a subscription (the agent's own login → `"auth": "subscription"`) or with
+  an API key from their environment (`"auth": "api"`, optionally `"budget_usd": {"amount": …, "hours": 24}`)?
+  **Never** ask for, copy, print or store a password, token or key — the dispatcher only starts the agent CLI, which
+  uses the user's own sign-in.
+- Windows/limits: the `claude` worker has `"windows": "reported"` (read from the CLI). For the others **ASK** whether they
+  know their plan's limits — then write them as `"windows": [{"name": "short", "hours": 5}, {"name": "week", "hours": 168}]`
+  — or leave `windows` out (unknown: the dispatcher just runs one task at a time and pauses after a limit is hit).
+- **ASK** whether unattended runs may edit files and run commands, and put the agent's own approval/sandbox flags into
+  the worker's `"args"` (for example `["--permission-mode", "acceptEdits"]` for claude, `["--sandbox", "workspace-write"]`
+  for codex, `["--approval-mode", "auto_edit"]` for gemini). Do not choose the most permissive mode for the user.
 
 Show the user the final config (it contains no secrets) and get an OK.
 
@@ -58,8 +63,8 @@ The rules for *using* the dispatcher live in this repo. Install them where the u
 | Agent | Where | How |
 |---|---|---|
 | Claude Code | `~/.claude/skills/dispatcher-tasks/SKILL.md` | copy `skills/dispatcher-tasks/SKILL.md` (a Claude Code skill — loaded when relevant) |
-| Codex CLI | `~/.codex/AGENTS.md` | append the block from `memory/AGENTS.snippet.md` (between its markers) |
-| Gemini CLI | `~/.gemini/GEMINI.md` | append the same block from `memory/AGENTS.snippet.md` |
+| Codex CLI | `~/.codex/AGENTS.md` (`$CODEX_HOME/AGENTS.md` if `CODEX_HOME` is set) | append the block from `memory/AGENTS.snippet.md` (between its markers). If `AGENTS.override.md` exists in that folder, Codex reads only that file — append there instead |
+| Gemini CLI | `~/.gemini/GEMINI.md` | append the same block from `memory/AGENTS.snippet.md` (if the user renamed the context file with `context.fileName`, use that name) |
 
 If a file already exists, append — never overwrite the user's own instructions. Keep the `BEGIN/END dispatcher-tasks`
 markers so the block can be updated or removed later.
@@ -84,7 +89,9 @@ Explain to the user what the dry run says it *would* do (which worker, why, or w
 ## 6. Background tick (optional)
 
 The queue only moves when `tick` runs. **ASK** whether to run it every 5 minutes in the background. If yes, install the
-example for this OS and show the user how to stop it:
+example for this OS and show the user how to stop it. In the copied file replace `INSTALL_DIR` with the project folder
+(and, in the launchd plist, `HOME_DIR` with the user's home folder), and make sure its `PATH` reaches the agent CLIs
+(`command -v claude` etc.):
 
 - macOS: `examples/launchd/dispatcher-tasks.tick.plist` → `~/Library/LaunchAgents/`, then
   `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/dispatcher-tasks.tick.plist`

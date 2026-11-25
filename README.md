@@ -124,7 +124,7 @@ python3 -m unittest discover -s tests
 python3 dispatcher.py init
 ```
 
-Then follow steps 3–6 of [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md).
+Then follow steps 2–6 of [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md).
 
 ## Commands
 
@@ -137,20 +137,63 @@ python3 dispatcher.py limits            # what each agent has left (when the age
 python3 dispatcher.py tick --dry-run    # what the next step would do
 ```
 
-Sizes are rough shares of a usage window: **S** ≈ 3 %, **M** ≈ 10 %, **L** ≈ 25 %, **XL** ≈ 50 %. The dispatcher
-learns real sizes from finished tasks.
+`--brief "text"` works instead of `--brief-file`; `--needs <worker>` pins a task to one agent; `--cwd` is the folder the
+agent works in (default: where you run the command); `--dry-run` records a test entry that `tick` only describes.
+
+Sizes are rough shares of a usage window: **S** ≈ 3 %, **M** ≈ 10 %, **L** ≈ 25 %, **XL** ≈ 50 %. When the agent
+reports its usage (Claude Code does), the dispatcher learns real sizes from finished tasks.
+
+## Configuration
+
+`python3 dispatcher.py init` writes `config.json` in the dispatcher home (`~/.config/dispatcher-tasks`, or
+`$DISPATCHER_HOME`) with one worker per agent CLI found on your machine. It holds no secrets:
+
+```json
+{"workers": [
+  {"name": "claude", "agent": "claude", "enabled": true, "auth": "subscription", "windows": "reported", "probe_minutes": 10},
+  {"name": "codex", "agent": "codex", "enabled": true, "auth": "api", "args": ["--sandbox", "workspace-write"],
+   "windows": [{"name": "short", "hours": 5}, {"name": "week", "hours": 168}]},
+  {"name": "gemini", "agent": "gemini", "enabled": false}
+]}
+```
+
+- `auth`: `subscription` — the agent's own sign-in (API-key variables are removed from the run's environment, so a stray
+  key does not bill an API account); `api` — an API key you set in your own environment; the agent reads it, the
+  dispatcher never does. For unattended work, API keys are the recommended path; `"budget_usd": {"amount": 5,
+  "hours": 24}` then limits spending (for agents that report cost).
+- `windows`: `"reported"` — the agent says how much is used; a list of windows (`hours`) — counted from the dispatcher's
+  own runs; left out — unknown: one task at a time, and a pause after a limit is hit (`pause_after_limit_minutes`).
+- `model`, `args` — added to the agent's command. Approvals and sandbox for unattended runs are your choice and go into
+  `args`; the dispatcher does not loosen them for you.
+- One worker per agent — the dispatcher schedules your work, it does not spread it over several accounts.
+
+## Limits: what is read and what it costs
+
+- **Claude Code** prints its usage windows (`rate_limit_event`) in its normal JSON output; every finished run updates
+  them at no extra cost. When a task is waiting and the numbers are older than `probe_minutes` (default 10), the
+  dispatcher makes one *probe*: an ordinary `claude -p` request to Haiku with no tools and no saved session, answering
+  one word — it counts against your plan like any tiny request. `"probe_minutes": 0` turns the probe off.
+- **Codex CLI and Gemini CLI** do not report usage in their output, so there is no probe: you describe your plan's
+  windows in the config, or leave them unknown.
+- After any run stops at a usage limit, that worker pauses until the reset the agent named (or for
+  `pause_after_limit_minutes`), and the task continues after it.
 
 ## Supported agents
 
 | Agent | Start | Continue same session | Limits | Verified live |
 |---|---|---|---|---|
-| Claude Code | ✅ | ✅ | ✅ read from the CLI | ✅ |
-| Codex CLI | ✅ | per its docs | configured by you | not yet |
-| Gemini CLI | ✅ | per its docs | configured by you | not yet |
+| Claude Code | ✅ | ✅ `--resume` | ✅ read from the CLI's output | ✅ start, resume, limits |
+| Codex CLI | ✅ `codex exec --json` | ✅ `codex exec resume` (per its docs) | configured by you | not yet — built from its docs |
+| Gemini CLI | ✅ `gemini --output-format json` | a new run with the last report¹ | configured by you | not yet — built from its docs |
 | Other agents | — | — | — | [contributions welcome](CONTRIBUTING.md) |
 
-Adding an agent means writing one small adapter: start, continue, status, report, and (optionally) limits.
-See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+¹ Gemini CLI has `--resume`, but its documented JSON output does not include the session id, so the adapter does not
+guess it. A contribution that reads it is welcome.
+
+### Other agents — contributions welcome
+
+The scheduler knows no agent; each agent is one small adapter in `adapters/`: start, continue, status, report, and
+(optionally) limits. Copy `adapters/_template.py` and see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## What it does not do
 
@@ -162,7 +205,8 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Terms
 
-You are responsible for using each agent within its provider's terms. For unattended runs, providers generally
+This is a scheduler for **one person's own work** on their own machine. You are responsible for complying with the
+terms of each agent you configure. For unattended runs, providers generally
 recommend API keys over consumer subscriptions. Read, for example, Anthropic's
 [Consumer Terms](https://www.anthropic.com/legal/consumer-terms), [Usage Policy](https://www.anthropic.com/legal/aup)
 and [Claude Code legal and compliance](https://code.claude.com/docs/en/legal-and-compliance), and the equivalent pages
